@@ -15,10 +15,24 @@ namespace net.rs64.PAngelsStealersUtility
         {
             InPhase(BuildPhase.Transforming)
                 .AfterPlugin("nadena.dev.modular-avatar")
+
                 .Run(MirroringTransformPass.Instance).Then
                 .Run(AnkletBraceletStealerScalerPass.Instance).Then
-                .Run(CopyToSerializedComponentValuePass.Instance)
+                .Run(CopyToSerializedComponentValuePass.Instance).Then
+
+                .Run(PASUComponentPagePass.Instance)
             ;
+        }
+    }
+
+    public sealed class PASUComponentPagePass : Pass<PASUComponentPagePass>
+    {
+        protected override void Execute(BuildContext context)
+        {
+            foreach (var i in context.AvatarRootObject.GetComponentsInChildren<PASUComponent>(true))
+            {
+                UnityEngine.Object.DestroyImmediate(i);
+            }
         }
     }
 }
