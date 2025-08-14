@@ -1,0 +1,15 @@
+{
+  "name": "net.rs64.reina-s-p-angels-stealers-utility",
+  "displayName": "ReinaSakiria's-P-Angel's-Stealers-Utility",
+  "version": "0.0.0",
+  "unity": "2022.3",
+  "description": "Utility for ReinaSakiria's P-Angel's-Stealers",
+  "author": {
+    "name": "ReinaSakiria",
+    "url": "https://rs64.net/"
+  },
+  "url": "https://github.com/ReinaS-64892/ReinaS-P-Angels-Stealers-Utility",
+  "vpmDependencies": {
+    "nadena.dev.ndmf": "^1.6.0"
+  }
+}
