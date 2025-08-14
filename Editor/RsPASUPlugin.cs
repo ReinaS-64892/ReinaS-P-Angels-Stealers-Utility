@@ -15,8 +15,8 @@ namespace net.rs64.PAngelsStealersUtility
         {
             InPhase(BuildPhase.Transforming)
                 .AfterPlugin("nadena.dev.modular-avatar")
-                .Run(MirroringTransformPass.Instance)
-                .Then
+                .Run(MirroringTransformPass.Instance).Then
+                .Run(AnkletBraceletStealerScalerPass.Instance).Then
                 .Run(CopyToSerializedComponentValuePass.Instance)
             ;
         }
