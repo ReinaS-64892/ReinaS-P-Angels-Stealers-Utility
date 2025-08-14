@@ -1,0 +1,19 @@
+{
+    "name": "net.rs64.reina-s-p-angels-stealers-utility.editor",
+    "rootNamespace": "",
+    "references": [
+        "net.rs64.reina-s-p-angels-stealers-utility.runtime",
+        "nadena.dev.ndmf"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
