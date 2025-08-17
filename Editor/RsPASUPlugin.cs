@@ -14,7 +14,7 @@ namespace net.rs64.PAngelsStealersUtility
         protected override void Configure()
         {
             InPhase(BuildPhase.Transforming)
-                .AfterPlugin("nadena.dev.modular-avatar")
+                .BeforePlugin("nadena.dev.modular-avatar")
 
                 .Run(MirroringTransformPass.Instance).Then
                 .Run(AnkletBraceletStealerScalerPass.Instance).Then
