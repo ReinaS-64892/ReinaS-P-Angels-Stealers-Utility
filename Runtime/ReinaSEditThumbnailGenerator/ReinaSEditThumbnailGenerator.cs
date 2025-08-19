@@ -1,10 +1,10 @@
 #nullable enable
+using UnityEngine;
 #if UNITY_EDITOR
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using UnityEditor;
-using UnityEngine;
 using UnityEngine.Rendering;
 using Debug = UnityEngine.Debug;
 
@@ -120,5 +120,5 @@ namespace net.rs64.PAngelsStealersUtility
     }
 }
 #else
-namespace net.rs64.PAngelsStealersUtility { public class ReinaSEditThumbnailGenerator : Component { } }
+namespace net.rs64.PAngelsStealersUtility { public class ReinaSEditThumbnailGenerator : MonoBehaviour { } }
 #endif
