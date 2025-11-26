@@ -40,7 +40,7 @@ namespace net.rs64.PAngelsStealersUtility
             var idleClip = VirtualClip.Create("idle-material");
             var stopClip = VirtualClip.Create("stop-material");
 
-            WriteClip(context, idleClip, stopClip, stealingStop);
+            WriteMaterialStealingStopping(context, idleClip, stopClip, stealingStop);
 
             var idleState = stateMachine.AddState("idle", idleClip);
             var stopState = stateMachine.AddState("stop", stopClip);
@@ -64,7 +64,7 @@ namespace net.rs64.PAngelsStealersUtility
             controller.AddLayer(LayerPriority.Default, layer);
         }
 
-        public static void WriteClip(BuildContext context, VirtualClip idle, VirtualClip stop, StealingStopAFK stealingStop)
+        private static void WriteMaterialStealingStopping(BuildContext context, VirtualClip idle, VirtualClip stop, StealingStopAFK stealingStop)
         {
             var renderers = context.AvatarRootObject.GetComponentsInChildren<Renderer>();
             var materials = renderers.SelectMany(r => r.sharedMaterials).Distinct().ToArray();
@@ -91,7 +91,6 @@ namespace net.rs64.PAngelsStealersUtility
                 }
             }
         }
-
         static Dictionary<Texture, Texture2D> Targeting(StealingStopAFK stealingStop, Texture[] textures)
         {
             var originals = stealingStop.ReinaSEditTargetTextures;
