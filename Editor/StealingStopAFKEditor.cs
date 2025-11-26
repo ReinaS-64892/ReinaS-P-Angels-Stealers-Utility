@@ -146,6 +146,7 @@ namespace net.rs64.PAngelsStealersUtility
                 swapMat.name = mat.name + "(PASU-StopMat)";
 
                 foreach (var kv in targetTextures) { swapMat.ReplaceTexture(kv.Key, kv.Value); }
+                // TexTransTool の後に動作する必要はこの UseEmission の書き換えを確実にするためにある。
                 if (isSuspendEmission) { swapMat.SetInt("_UseEmission", 0); }
 
                 context.AssetSaver.SaveAsset(swapMat);
