@@ -1,6 +1,7 @@
 #nullable enable
 using System.Linq;
 using nadena.dev.ndmf;
+using nadena.dev.ndmf.animator;
 
 
 [assembly: ExportsPlugin(typeof(net.rs64.PAngelsStealersUtility.RsPASUPlugin))]
@@ -18,10 +19,16 @@ namespace net.rs64.PAngelsStealersUtility
 
                 .Run(MirroringTransformPass.Instance).Then
                 .Run(AnkletBraceletStealerScalerPass.Instance).Then
-                .Run(CopyToSerializedComponentValuePass.Instance).Then
+                .Run(CopyToSerializedComponentValuePass.Instance)
 
-                .Run(PASUComponentPagePass.Instance)
             ;
+            InPhase(BuildPhase.Transforming)
+                .AfterPlugin("net.rs64.tex-trans-tool")
+                .WithRequiredExtension(typeof(AnimatorServicesContext), seq =>
+                {
+                    seq.Run(StealingStopAFKPass.Instance)
+                    .Then.Run(PASUComponentPagePass.Instance);
+                });
         }
     }
 
