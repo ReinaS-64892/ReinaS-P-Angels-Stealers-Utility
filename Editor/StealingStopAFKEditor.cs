@@ -27,6 +27,8 @@ namespace net.rs64.PAngelsStealersUtility
         {
             return stealingStopAFK.ReinaSEditTargetTextures.Any();
         }
+        const string AFK_PARM = "AFK";
+        const string AFK_STEALER_PARM = "Stealer-AFK-Exit-Wait";
         public static void Execute(BuildContext context, StealingStopAFK stealingStop)
         {
             var asc = context.Extension<AnimatorServicesContext>();
@@ -48,7 +50,7 @@ namespace net.rs64.PAngelsStealersUtility
             var idle2Stop = VirtualStateTransition.Create();
             idle2Stop.ExitTime = null;
             idle2Stop.Duration = 0f;
-            idle2Stop.Conditions = ImmutableList.Create(new AnimatorCondition() { mode = AnimatorConditionMode.If, parameter = "AFK" });
+            idle2Stop.Conditions = ImmutableList.Create(new AnimatorCondition() { mode = AnimatorConditionMode.If, parameter = AFK_PARM });
             idle2Stop.SetDestination(stopState);
             idleState.Transitions = ImmutableList.Create(idle2Stop);
 
@@ -56,7 +58,7 @@ namespace net.rs64.PAngelsStealersUtility
             var stop2Idle = VirtualStateTransition.Create();
             stop2Idle.ExitTime = null;
             stop2Idle.Duration = 0f;
-            stop2Idle.Conditions = ImmutableList.Create(new AnimatorCondition() { mode = AnimatorConditionMode.IfNot, parameter = "AFK" });
+            stop2Idle.Conditions = ImmutableList.Create(new AnimatorCondition() { mode = AnimatorConditionMode.IfNot, parameter = AFK_PARM }, new AnimatorCondition() { mode = AnimatorConditionMode.IfNot, parameter = AFK_STEALER_PARM });
             stop2Idle.SetDestination(idleState);
             stopState.Transitions = ImmutableList.Create(stop2Idle);
 
