@@ -68,7 +68,7 @@ namespace net.rs64.PAngelsStealersUtility
 
         private static void WriteMaterialStealingStopping(BuildContext context, VirtualClip idle, VirtualClip stop, StealingStopAFK stealingStop)
         {
-            var renderers = context.AvatarRootObject.GetComponentsInChildren<Renderer>();
+            var renderers = context.AvatarRootObject.GetComponentsInChildren<Renderer>(true);
             var materials = renderers.SelectMany(r => r.sharedMaterials).Distinct().ToArray();
             var textures = materials.SelectMany(m => m.GetTextureReferences().Values).Distinct().ToArray();
             var targetTextures = Targeting(stealingStop, textures);
@@ -79,7 +79,7 @@ namespace net.rs64.PAngelsStealersUtility
             foreach (var renderer in renderers)
             {
                 var mats = renderer.sharedMaterials;
-                if (mats.Any(m => materialMap.Keys.Contains(m)) is false) { continue; }
+                if (mats.Where(m => m != null).Any(m => materialMap.Keys.Contains(m)) is false) { continue; }
                 var path = RuntimeUtil.RelativePath(context.AvatarRootObject, renderer.gameObject);
 
                 for (var i = 0; mats.Length > i; i += 1)
