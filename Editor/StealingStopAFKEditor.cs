@@ -114,6 +114,7 @@ namespace net.rs64.PAngelsStealersUtility
         {
             foreach (var kv in targetTextures.ToArray())
             {
+                var format = kv.Value.format;// フォーマットは BC1 とかにするにしても、アルファが消える事故につながるから継承する。
                 var originalTexture = kv.Value.TryGetUnCompress();
                 var miniRt = new RenderTexture(kv.Key.width / 4, kv.Key.height / 4, 0, RenderTextureFormat.ARGB32);
                 var miniTex = new Texture2D(miniRt.width, miniRt.height, TextureFormat.RGBA32, true);
@@ -122,7 +123,7 @@ namespace net.rs64.PAngelsStealersUtility
                 Graphics.Blit(originalTexture, miniRt);
                 miniRt.DownloadFromRenderTexture(miniTex.GetPixelData<Color32>(0).AsSpan());
                 miniTex.Apply(true);
-                EditorUtility.CompressTexture(miniTex, TextureFormat.DXT1, 100);// なんと決め打ち！ まぁこんな物に対した圧縮フォマットを使っても仕方がない。
+                EditorUtility.CompressTexture(miniTex, format, 100);
                 miniTex.Apply(false, true);
                 EditorTextureUtility.ForceMarkStreamingMipMap(miniTex);
 
