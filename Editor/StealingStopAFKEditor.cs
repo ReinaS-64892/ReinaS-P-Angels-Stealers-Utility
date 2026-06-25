@@ -11,8 +11,9 @@ using UnityEditor;
 using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.Rendering;
+#if RSPASU_VRCSDK3_AVATARS
 using VRC.SDK3.Avatars.Components;
-
+#endif
 namespace net.rs64.PAngelsStealersUtility
 {
     [CustomEditor(typeof(StealingStopAFK))]
@@ -31,6 +32,8 @@ namespace net.rs64.PAngelsStealersUtility
         const string AFK_STEALER_PARM = "Stealer-AFK-Exit-Wait";
         public static void Execute(BuildContext context, StealingStopAFK stealingStop)
         {
+#if RSPASU_VRCSDK3_AVATARS
+
             var asc = context.Extension<AnimatorServicesContext>();
 
             var controllerCtx = asc.ControllerContext;
@@ -64,6 +67,7 @@ namespace net.rs64.PAngelsStealersUtility
 
             layer.StateMachine = stateMachine;
             controller.AddLayer(LayerPriority.Default, layer);
+#endif
         }
 
         private static void WriteMaterialStealingStopping(BuildContext context, VirtualClip idle, VirtualClip stop, StealingStopAFK stealingStop)
