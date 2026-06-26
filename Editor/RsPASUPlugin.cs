@@ -8,6 +8,7 @@ using nadena.dev.ndmf.animator;
 
 namespace net.rs64.PAngelsStealersUtility
 {
+    [RunsOnAllPlatforms]
     internal class RsPASUPlugin : Plugin<RsPASUPlugin>
     {
         public override string QualifiedName => "net.rs64.reina-s-p-angels-stealers-utility";
