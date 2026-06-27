@@ -26,6 +26,7 @@ namespace net.rs64.PAngelsStealersUtility
 
         public static bool Valid(StealingStopAFK stealingStopAFK)
         {
+            if (stealingStopAFK.enabled is false) { return false; }
             return stealingStopAFK.ReinaSEditTargetTextures.Any();
         }
         const string AFK_PARM = "AFK";
